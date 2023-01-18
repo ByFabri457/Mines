@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
-        boolean columnaNoTrobada;
-        boolean filaNoTrobada;
+
 
         int modificarX;
         int modificarY;
@@ -12,7 +11,7 @@ class Main {
         TaulaVirtual taula = new TaulaVirtual();
 
         taula.crearTaula();
-        taula.afegirMines();
+        taula.crearMines();
 
 
 
@@ -22,18 +21,17 @@ class Main {
             do {
                 System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
                 modificarX = sc.nextInt();
-                if (modificarX > taula.midaTaulaX) {
+                if (modificarX > taula.midaTaulaX+1 || modificarX < 1) {
                     System.out.println("No s'ha trobat la columna " + modificarX);
                 }
-            }while (modificarX > taula.midaTaulaX && modificarX < 1);
-
+            }while (modificarX > taula.midaTaulaX+1 || modificarX < 1);
             do {
                 System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
                 modificarY = sc.nextInt();
-                if (modificarY > taula.midaTaulaX) {
+                if (modificarY > taula.midaTaulaY+1 || modificarY < 1) {
                     System.out.println("No s'ha trobat la fila " + modificarY);
                 }
-            }while (modificarY > taula.midaTaulaY && modificarY < 1);
+            }while (modificarY > taula.midaTaulaY+1 || modificarY < 1);
 
             taula.modificarTaula(modificarX, modificarY);
 
@@ -45,7 +43,7 @@ class Main {
 
 //        System.out.println();
 //        for (int i = 0; i < taula.midaTaulaX; i++) {
-//            for (int j = 0; j < taula.midaTaulaY; j++) {
+//          for (int j = 0; j < taula.midaTaulaY; j++) {
 //                System.out.print(taula.taula[i][j] + "  ");
 //            }
 //            System.out.println();
