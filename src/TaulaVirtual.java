@@ -5,6 +5,10 @@ public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
     public static boolean gameOver = false;
     public static int[][] taula;
+
+    public static int[] indexExploracioX = {-1,0,+1,+1,+1,0,-1,-1};
+
+    public static int[] indexExploracioY = {-1,-1,-1,0,+1,+1,+1,0};
     public static int midaTaulaX;
     public static int midaTaulaY;
     public static void crearTaula() {
@@ -15,7 +19,7 @@ public class TaulaVirtual {
         System.out.println();
         System.out.print("Numero Columnes:");
         midaTaulaY = sc.nextInt();
-        taula = new int[midaTaulaX][midaTaulaY];
+        taula = new int[midaTaulaX+2][midaTaulaY+2];
     }
     public static void afegirMines() {
         int posicioY = 0;
@@ -47,9 +51,9 @@ public class TaulaVirtual {
 
 
         }
-        for (int i = 0; i < midaTaulaX; i++) {
+        for (int i = 1; i < midaTaulaX-1; i++) {
 
-            for (int j = 0; j < midaTaulaY; j++) {
+            for (int j = 1; j < midaTaulaY-1; j++) {
                 minaTrobada = false;
                 for (int k = 0; k < numeroMines; k++) {
 
@@ -58,6 +62,30 @@ public class TaulaVirtual {
                         minaTrobada = true;
                     } else if (minaTrobada == false) {
                         taula[i][j] = 0;
+                    }
+                }
+            }
+        }
+    }
+    public static void modificarTaula(int eleccioX,int eleccioY) {
+        int indexMina;
+        for (int i = 1;i < midaTaulaX-1;i++) {
+            for (int j = 1;j < midaTaulaY-1;j++) {
+                if (i == eleccioX && j == eleccioY) {
+                    if (taula[i][j] == 0) {
+                        indexMina = 0;
+                        for (int k = 0;k < 8;k++) {
+
+                            if (taula[i+indexExploracioX[k]][j+indexExploracioY[k]] == 3 || taula[i+indexExploracioX[k]][j+indexExploracioY[k]] == 2) {
+                                indexMina += 1;
+                            }
+
+                        }
+                        if (indexMina == 0) taula[i][j] = 1;
+                        if (indexMina >= 1) taula[i][j] = indexMina + 10;
+                    }
+                    if (taula[i][j] == 3) {
+                        gameOver = true;
                     }
                 }
             }
