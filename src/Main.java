@@ -37,14 +37,14 @@ class Main {
                 TaulaUsuari.mostrarTaulaUsuari(taula);
                 System.out.println();
                 do {
-                    System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
+                    System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
                     modificarX = sc.nextInt();
                     if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
                         System.out.println("No s'ha trobat la columna " + modificarX);
                     }
                 } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                 do {
-                    System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
+                    System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
                     modificarY = sc.nextInt();
                     if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
                         System.out.println("No s'ha trobat la fila " + modificarY);
