@@ -68,7 +68,10 @@ public class TaulaVirtual {
                             }
 
                         }
-                        if (indexMina == 0) taula[i][j] = 1;
+                        if (indexMina == 0) {
+                            taula[i][j] = 1;
+                            expandirTaulell(eleccioX,eleccioY);
+                        }
                         if (indexMina >= 1) taula[i][j] = indexMina + 10;
                     }
                     if (taula[i][j] == 3) {
@@ -94,6 +97,12 @@ public class TaulaVirtual {
                     }
                 }
             }
+        }
+    }
+
+    public static void expandirTaulell(int eleccioX,int eleccioY) {
+        for (int i = 0;i < 8; i++) {
+            modificarTaula(eleccioX+indexExploracioX[i],eleccioY+indexExploracioY[i]);
         }
     }
 }

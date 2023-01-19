@@ -12,6 +12,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -19,6 +21,7 @@
       </list>
     </option>
   </component>
+>>>>>>> main
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -36,12 +39,20 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+<<<<<<< HEAD
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fabri/Desktop/Mines&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+=======
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Fabri/Desktop/Mines&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+>>>>>>> main
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -52,13 +63,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673546914727</updated>
+<<<<<<< HEAD
+      <workItem from="1674075521164" duration="5542000" />
+      <workItem from="1674136060000" duration="4758000" />
+      <workItem from="1674151599589" duration="411000" />
+=======
       <workItem from="1673546998894" duration="391000" />
       <workItem from="1673967273784" duration="1840000" />
       <workItem from="1674050681038" duration="13694000" />
       <workItem from="1674146821540" duration="3537000" />
       <workItem from="1674150834568" duration="652000" />
+<<<<<<< HEAD
       <workItem from="1674152409928" duration="19000" />
       <workItem from="1674152465501" duration="16000" />
+=======
+>>>>>>> main
+>>>>>>> funcionalitatExpansio
     </task>
     <servers />
   </component>
