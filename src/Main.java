@@ -59,16 +59,6 @@ class Main {
                 System.out.println("Has Perdut!");
             }
         }
-
-
-//        System.out.println();
-//        for (int i = 0; i < taula.midaTaulaX; i++) {
-//          for (int j = 0; j < taula.midaTaulaY; j++) {
-//                System.out.print(taula.taula[i][j] + "  ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
     }
 
     public static void mostrarMenu() {
