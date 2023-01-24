@@ -15,10 +15,10 @@ public class TaulaVirtual {
     public static void crearTaula() {
 
         System.out.println("Escolleix la mida de la taula");
-        System.out.print("Número Files:");
+        System.out.print("Número Files: ");
         midaTaulaX = sc.nextInt();
         System.out.println();
-        System.out.print("Número Columnes:");
+        System.out.print("Número Columnes: ");
         midaTaulaY = sc.nextInt();
         taula = new int[midaTaulaX + 2][midaTaulaY + 2];
     }
@@ -30,7 +30,7 @@ public class TaulaVirtual {
 
         Random rand = new Random();
 
-        System.out.println("Escriu el número de mines");
+        System.out.print("Escriu el número de mines: ");
 
         int numeroMines = sc.nextInt();
 
