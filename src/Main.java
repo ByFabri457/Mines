@@ -16,7 +16,7 @@ class Main {
             opcioNoValida = false;
             mostrarMenu();
             try {
-                System.out.print(">");
+                System.out.print("> ");
                 opcio = Integer.parseInt(sc.nextLine());
             } catch (NumberFormatException error) {
                 opcio = -1;
@@ -56,6 +56,7 @@ class Main {
             }
             if (taula.gameOver) {
                 TaulaUsuari.mostrarTaulaUsuari(taula);
+                System.out.println();
                 System.out.println("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼\n" +
                         "███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀\n" +
                         "██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀\n" +
