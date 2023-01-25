@@ -7,6 +7,7 @@ public class TaulaUsuari {
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
         System.out.println();
 
+        String[][] vistaUsuari = new String[taula.midaTaulaX+2][taula.midaTaulaY+2];
         for (int i = 0; i < taula.midaTaulaX + 1; i++) {
             for (int j = 0; j < taula.midaTaulaY + 1; j++) {
                 if (i == 0 && j == 0) System.out.print("   ");
@@ -15,9 +16,14 @@ public class TaulaUsuari {
                 if (j != 0 && i != 0) {
                     if (taula.taula[i][j] == 0) System.out.print(" ■ ");
                     if (taula.taula[i][j] == 1) System.out.print(" □ ");
+                    if (taula.taula[i][j] == 2) {
+                        if (taula.gameOver == 0) System.out.print(" P ");
+                        if (taula.gameOver == 1) System.out.print(" X ");
+                    }
+                    if (taula.taula[i][j] == 32) System.out.print(" P ");
                     if (taula.taula[i][j] == 3) {
-                        if (taula.gameOver == false) System.out.print(" ■ ");
-                        if (taula.gameOver == true) System.out.print(" ¤ ");
+                        if (taula.gameOver == 0) System.out.print(" ■ ");
+                        if (taula.gameOver == 1) System.out.print(" ¤ ");
                     }
                     if (taula.taula[i][j] == 11) System.out.print(" 1 ");
                     if (taula.taula[i][j] == 12) System.out.print(" 2 ");
