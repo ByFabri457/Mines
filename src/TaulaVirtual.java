@@ -29,8 +29,8 @@ public class TaulaVirtual {
 
 
         Random rand = new Random();
-
-        System.out.println("Escriu el número de mines");
+        System.out.println();
+        System.out.print("Escriu el número de mines");
 
         int numeroMines = sc.nextInt();
 
