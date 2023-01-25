@@ -6,7 +6,7 @@ class Main {
         int opcioPartida;
         int opcio;
         boolean sortida;
-
+        TaulaVirtual taula;
         int modificarX;
         int modificarY;
 
@@ -31,7 +31,7 @@ class Main {
                 pause();
             }
             if (opcio == 1) {
-                TaulaVirtual taula = new TaulaVirtual();
+                taula = new TaulaVirtual();
                 taula.crearTaula();
                 taula.crearMines();
 
@@ -53,17 +53,17 @@ class Main {
 
                         case 1:
                             do {
-                                System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
+                                System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
                                 modificarX = sc.nextInt();
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
-                                    System.out.println("No s'ha trobat la columna " + modificarX);
+                                    System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
-                                System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
+                                System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
                                 modificarY = sc.nextInt();
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
-                                    System.out.println("No s'ha trobat la fila " + modificarY);
+                                    System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
                             } while (modificarY > taula.midaTaulaY + 1 || modificarY < 1);
 
@@ -72,17 +72,17 @@ class Main {
 
                         case 2:
                             do {
-                                System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
+                                System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
                                 modificarX = sc.nextInt();
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
-                                    System.out.println("No s'ha trobat la columna " + modificarX);
+                                    System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
-                                System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
+                                System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
                                 modificarY = sc.nextInt();
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
-                                    System.out.println("No s'ha trobat la fila " + modificarY);
+                                    System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
                             } while (modificarY > taula.midaTaulaY + 1 || modificarY < 1);
                             sc.nextLine();
@@ -156,6 +156,7 @@ class Main {
     }
 
     public static void pause() {
+        sc.nextLine();
         System.out.println();
         System.out.println("Pressiona Intro per continuar...");
         System.out.println(sc.nextLine());
