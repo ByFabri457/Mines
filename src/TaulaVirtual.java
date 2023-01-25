@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
-    public static boolean gameOver = false;
+    public static int gameOver = 0;
     public static int[][] taula;
 
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
@@ -61,19 +61,20 @@ public class TaulaVirtual {
                         indexMina = 0;
                         for (int k = 0; k < 8; k++) {
 
-                            if (taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 3) {
+                            if (taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 3 || taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 32) {
                                 indexMina += 1;
                             }
 
+
                         }
-                        if (indexMina == 0) {
+                        if (indexMina == 0 && taula[i][j] != 2) {
                             taula[i][j] = 1;
                             expandirTaulell(eleccioX, eleccioY);
                         }
                         if (indexMina >= 1) taula[i][j] = indexMina + 10;
                     }
                     if (taula[i][j] == 3) {
-                        gameOver = true;
+                        gameOver = 1;
                     }
                 }
             }
@@ -99,7 +100,23 @@ public class TaulaVirtual {
         }
     }
 
-    public static void expandirTaulell(int eleccioX, int eleccioY) {
+
+    public static void marcarCasella(int eleccioX, int eleccioY) {
+        for (int i = 1; i < midaTaulaX + 1; i++) {
+            for (int j = 1; j < midaTaulaY + 1; j++) {
+                if (i == eleccioX && j == eleccioY) {
+                    if (taula[i][j] == 0) {
+                        taula[i][j] = 2;
+                    }
+                    if (taula[i][j] == 3) {
+                        taula[i][j] = 32;
+                    }
+                }
+            }
+        }
+    }
+
+    public static void expandirTaulell(int eleccioX,int eleccioY) {
         for (int i = 0; i < 8; i++) {
             modificarTaula(eleccioX + indexExploracioX[i], eleccioY + indexExploracioY[i]);
         }
