@@ -5,9 +5,14 @@ public class TaulaUsuari {
             for (int j = 1;j < taula.midaTaulaY+1;j++) {
                 if (taula.taula[i][j] == 0) System.out.print(" ■ ");
                 if (taula.taula[i][j] == 1) System.out.print(" □ ");
+                if (taula.taula[i][j] == 2) {
+                    if (taula.gameOver == 0) System.out.print(" P ");
+                    if (taula.gameOver == 1) System.out.print(" X ");
+                }
+                if (taula.taula[i][j] == 32) System.out.println("P");
                 if (taula.taula[i][j] == 3) {
-                    if (taula.gameOver == false) System.out.print(" ■ ");
-                    if (taula.gameOver == true) System.out.print(" ¤ ");
+                    if (taula.gameOver == 0) System.out.print(" ■ ");
+                    if (taula.gameOver == 1) System.out.print(" ¤ ");
                 }
                 if (taula.taula[i][j] == 11) System.out.print(" 1 ");
                 if (taula.taula[i][j] == 12) System.out.print(" 2 ");

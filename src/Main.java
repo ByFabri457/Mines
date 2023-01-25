@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) {
+        int opcioPartida;
 
 
         int modificarX;
@@ -15,28 +16,67 @@ class Main {
 
 
 
-        while (!taula.gameOver) {
+        while (taula.gameOver > 0) {
             TaulaUsuari.mostrarTaulaUsuari(taula);
-            System.out.println();
-            do {
-                System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
-                modificarX = sc.nextInt();
-                if (modificarX > taula.midaTaulaX+1 || modificarX < 1) {
-                    System.out.println("No s'ha trobat la columna " + modificarX);
-                }
-            }while (modificarX > taula.midaTaulaX+1 || modificarX < 1);
-            do {
-                System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
-                modificarY = sc.nextInt();
-                if (modificarY > taula.midaTaulaY+1 || modificarY < 1) {
-                    System.out.println("No s'ha trobat la fila " + modificarY);
-                }
-            }while (modificarY > taula.midaTaulaY+1 || modificarY < 1);
+            System.out.println("Escriu 0 per finalitzar la partida");
+            System.out.println("Escriu 1 per explorar una casella");
+            System.out.println("Escriu 2 per marcar una casella");
+            try {
+                opcioPartida = sc.nextInt();
+            } catch (NumberFormatException error) {
+                opcioPartida = -1;
+                sc.nextLine();
+            }
+            switch (opcioPartida) {
+                case 0:
+                    taula.gameOver = 2;
+                    break;
 
-            taula.modificarTaula(modificarX, modificarY);
+                case 1:
+                    do {
+                        System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
+                        modificarX = sc.nextInt();
+                        if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
+                            System.out.println("No s'ha trobat la columna " + modificarX);
+                        }
+                    } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
+                    do {
+                        System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
+                        modificarY = sc.nextInt();
+                        if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
+                            System.out.println("No s'ha trobat la fila " + modificarY);
+                        }
+                    } while (modificarY > taula.midaTaulaY + 1 || modificarY < 1);
+
+                    taula.modificarTaula(modificarX, modificarY);
+                    break;
+
+                case 2:
+                    do {
+                        System.out.println("Escogeix columna (1-" + taula.midaTaulaX + "):");
+                        modificarX = sc.nextInt();
+                        if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
+                            System.out.println("No s'ha trobat la columna " + modificarX);
+                        }
+                    } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
+                    do {
+                        System.out.println("Escogeix fila (1-" + taula.midaTaulaY + "):");
+                        modificarY = sc.nextInt();
+                        if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
+                            System.out.println("No s'ha trobat la fila " + modificarY);
+                        }
+                    } while (modificarY > taula.midaTaulaY + 1 || modificarY < 1);
+
+                    taula.marcarCasella(modificarX, modificarY);
+                break;
+
+                default:
+                    System.out.println("Opció no vàlida");
+                    break;
+                }
 
         }
-        if (taula.gameOver) {
+        if (taula.gameOver == 1) {
             TaulaUsuari.mostrarTaulaUsuari(taula);
             System.out.println("Has Perdut!");
         }
