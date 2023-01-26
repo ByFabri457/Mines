@@ -5,7 +5,7 @@ public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
     public static int gameOver;
     public static int[][] taula;
-
+    public static int nMines = 0;
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
 
     public static int[] indexExploracioY = {-1, -1, -1, 0, +1, +1, +1, 0};
@@ -35,6 +35,7 @@ public class TaulaVirtual {
         System.out.print("Escriu el número de mines: ");
 
         int numeroMines = sc.nextInt();
+        nMines = numeroMines;
 
         int[] cordenadesMinesY = new int[numeroMines];
         int[] cordenadesMinesX = new int[numeroMines];
@@ -81,6 +82,8 @@ public class TaulaVirtual {
                 }
             }
         }
+        checkCasellesRestants();
+
     }
 
     public static void colocarMines(int numeroMines, int[] cordenadesMinesX, int[] cordenadesMinesY) {
@@ -123,11 +126,26 @@ public class TaulaVirtual {
                 }
             }
         }
+        checkCasellesRestants();
     }
 
     public static void expandirTaulell(int eleccioX,int eleccioY) {
         for (int i = 0; i < 8; i++) {
             modificarTaula(eleccioX + indexExploracioX[i], eleccioY + indexExploracioY[i]);
+        }
+    }
+
+    public static void checkCasellesRestants() {
+        int casellesLliuresSenseExplorar = 0;
+        for (int i = 1; i < midaTaulaX + 1;i++) {
+            for (int j = 1; j < midaTaulaY + 1;j++) {
+                if (taula[i][j] == 0 || taula[i][j] == 2) {
+                    casellesLliuresSenseExplorar += 1;
+                }
+            }
+        }
+        if (casellesLliuresSenseExplorar == 0) {
+            gameOver = 3;
         }
     }
 }

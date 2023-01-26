@@ -2,8 +2,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDateTime;
 public class TaulaUsuari {
-
-    public static LocalDateTime inici = java.time.LocalDateTime.now();
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
         System.out.println();
 
@@ -39,12 +37,5 @@ public class TaulaUsuari {
             }
             System.out.println();
         }
-        mostrarTemps();
-    }
-    public static void mostrarTemps() {
-        LocalDateTime cronometre = java.time.LocalDateTime.now();
-        System.out.println();
-        System.out.println("Temps transcurrit:"+(cronometre.getSecond()-inici.getSecond())+"s");
-        System.out.println("----------------------");
     }
 }
