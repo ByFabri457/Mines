@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
-    public static int gameOver = 0;
+    public static int gameOver;
     public static int[][] taula;
 
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
@@ -14,6 +14,7 @@ public class TaulaVirtual {
 
     public static void crearTaula() {
 
+        gameOver = 0;
         System.out.println("Escolleix la mida de la taula");
         System.out.print("Número Files: ");
         midaTaulaX = sc.nextInt();
@@ -31,7 +32,7 @@ public class TaulaVirtual {
         Random rand = new Random();
 
         System.out.println();
-        System.out.print("Escriu el número de mines");
+        System.out.print("Escriu el número de mines: ");
 
         int numeroMines = sc.nextInt();
 
@@ -106,12 +107,19 @@ public class TaulaVirtual {
         for (int i = 1; i < midaTaulaX + 1; i++) {
             for (int j = 1; j < midaTaulaY + 1; j++) {
                 if (i == eleccioX && j == eleccioY) {
-                    if (taula[i][j] == 0) {
+                    if (taula[i][j] == 2) {
+                        taula[i][j] = 0;
+                    }
+                    else if (taula[i][j] == 32) {
+                        taula[i][j] = 3;
+                    }
+                    else if (taula[i][j] == 0) {
                         taula[i][j] = 2;
                     }
-                    if (taula[i][j] == 3) {
+                    else if (taula[i][j] == 3) {
                         taula[i][j] = 32;
                     }
+
                 }
             }
         }

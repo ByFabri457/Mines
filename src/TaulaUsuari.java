@@ -11,8 +11,10 @@ public class TaulaUsuari {
         for (int i = 0; i < taula.midaTaulaX + 1; i++) {
             for (int j = 0; j < taula.midaTaulaY + 1; j++) {
                 if (i == 0 && j == 0) System.out.print("   ");
-                if (j == 0 && i != 0) System.out.print(" " + i + " ");
-                if (j != 0 && i == 0) System.out.print(" " + j + " ");
+                if (j == 0 && (i < 10 && i != 0)) System.out.print(" " + i + " ");
+                if ((j < 10 && j != 0) && i == 0) System.out.print(" " + j + " ");
+                if (j >= 10 && i == 0) System.out.print(" " + j + "");
+                if (j == 0 && i >= 10) System.out.print(" " + i + "");
                 if (j != 0 && i != 0) {
                     if (taula.taula[i][j] == 0) System.out.print(" ■ ");
                     if (taula.taula[i][j] == 1) System.out.print(" □ ");
