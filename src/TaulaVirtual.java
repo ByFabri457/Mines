@@ -5,13 +5,10 @@ public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
     public static int gameOver;
     public static int[][] taula;
-
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
-
     public static int[] indexExploracioY = {-1, -1, -1, 0, +1, +1, +1, 0};
     public static int midaTaulaX;
     public static int midaTaulaY;
-
     public static void crearTaula() {
 
         gameOver = 0;

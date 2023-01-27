@@ -3,7 +3,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 public class TaulaUsuari {
 
-    public static LocalDateTime inici = java.time.LocalDateTime.now();
+    public static long startTime = System.currentTimeMillis(); // Obté el temps actual en milisegons
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
         System.out.println();
 
@@ -42,9 +42,10 @@ public class TaulaUsuari {
         mostrarTemps();
     }
     public static void mostrarTemps() {
-        LocalDateTime cronometre = java.time.LocalDateTime.now();
+        long updateTime = System.currentTimeMillis();
+        long diffTimeSeconds = updateTime/1000-startTime/1000;
         System.out.println();
-        System.out.println("Temps transcurrit:"+(cronometre.getSecond()-inici.getSecond())+"s");
+        System.out.println("Temps transcurrit: "+diffTimeSeconds+"s");
         System.out.println("----------------------");
     }
 }
