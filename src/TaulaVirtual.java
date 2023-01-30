@@ -7,6 +7,8 @@ public class TaulaVirtual {
     public static int[][] taula;
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
     public static int[] indexExploracioY = {-1, -1, -1, 0, +1, +1, +1, 0};
+
+    public static int nMines;
     public static int midaTaulaX;
     public static int midaTaulaY;
     public static void crearTaula() {
@@ -32,6 +34,7 @@ public class TaulaVirtual {
         System.out.print("Escriu el número de mines: ");
 
         int numeroMines = sc.nextInt();
+        nMines = numeroMines;
 
         int[] cordenadesMinesY = new int[numeroMines];
         int[] cordenadesMinesX = new int[numeroMines];

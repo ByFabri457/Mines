@@ -5,8 +5,8 @@ public class TaulaUsuari {
 
     public static long startTime = System.currentTimeMillis(); // Obté el temps actual en milisegons
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
+        int comptadorMines = taula.nMines;
         System.out.println();
-
         String[][] vistaUsuari = new String[taula.midaTaulaX+2][taula.midaTaulaY+2];
         for (int i = 0; i < taula.midaTaulaX + 1; i++) {
             for (int j = 0; j < taula.midaTaulaY + 1; j++) {
@@ -19,10 +19,16 @@ public class TaulaUsuari {
                     if (taula.taula[i][j] == 0) System.out.print(" ■ ");
                     if (taula.taula[i][j] == 1) System.out.print(" □ ");
                     if (taula.taula[i][j] == 2) {
-                        if (taula.gameOver == 0) System.out.print(" P ");
+                        if (taula.gameOver == 0) {
+                            System.out.print(" P ");
+                            if (comptadorMines > 0)comptadorMines--;
+                        }
                         if (taula.gameOver == 1) System.out.print(" X ");
                     }
-                    if (taula.taula[i][j] == 32) System.out.print(" P ");
+                    if (taula.taula[i][j] == 32) {
+                        System.out.print(" P ");
+                        if (comptadorMines > 0)comptadorMines--;
+                    }
                     if (taula.taula[i][j] == 3) {
                         if (taula.gameOver == 0) System.out.print(" ■ ");
                         if (taula.gameOver == 1) System.out.print(" ¤ ");
@@ -40,12 +46,17 @@ public class TaulaUsuari {
             System.out.println();
         }
         mostrarTemps();
+        minesRestants(comptadorMines);
     }
     public static void mostrarTemps() {
         long updateTime = System.currentTimeMillis();
         long diffTimeSeconds = updateTime/1000-startTime/1000;
         System.out.println();
         System.out.println("Temps transcurrit: "+diffTimeSeconds+"s");
+
+    }
+    public static void minesRestants(int comptadorMines) {
+        System.out.println("Mines restants: "+comptadorMines);
         System.out.println("----------------------");
     }
 }
