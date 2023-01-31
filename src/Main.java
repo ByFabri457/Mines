@@ -4,6 +4,7 @@ import java.util.Scanner;
 class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
+        String Confirm;
         int opcioPartida;
         int opcio;
         boolean sortida;
@@ -11,7 +12,7 @@ class Main {
         int modificarX;
         int modificarY;
         Records record;
-        ArrayList records = new ArrayList<Records>();
+        ArrayList<Records> records = new ArrayList<Records>();
 
 
         do {
@@ -19,7 +20,7 @@ class Main {
 
             opcio = mostrarMenu();
             if (opcio == 0){
-                System.out.print("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n" +
+                System.out.println("░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n" +
                         "░░░▄▄▀▀▀▀▀▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n" +
                         "░▄▀░░░▄▄░░░▀▀▀▀▀▀▀▀▄▄▀▀▀▀▀▀▀▀▀▀▀▀▄▄░░░░\n" +
                         "░█░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░▀▄░░\n" +
@@ -44,27 +45,30 @@ class Main {
                     System.out.println("Escriu 1 per explorar una casella");
                     System.out.println("Escriu 2 per marcar una casella");
                     try {
-                        opcioPartida = sc.nextInt();
+                        opcioPartida = Integer.parseInt(sc.nextLine());
                     } catch (NumberFormatException error) {
                         opcioPartida = -1;
                         sc.nextLine();
                     }
                     switch (opcioPartida) {
                         case 0:
-                            taula.gameOver = 2;
+                            System.out.println("Estas segur de que vols Tornar al menu principal? escriu 'CONFIRMAR' per finalitzar la partida:");
+                            System.out.print(">");
+                            Confirm = sc.nextLine();
+                            if (Confirm.equals("CONFITMAR")) taula.gameOver = 2;
                             break;
 
                         case 1:
                             do {
                                 System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
-                                modificarX = sc.nextInt();
+                                modificarX = Integer.parseInt(sc.nextLine());
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
                                     System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
                                 System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
-                                modificarY = sc.nextInt();
+                                modificarY = Integer.parseInt(sc.nextLine());
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
                                     System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
@@ -76,19 +80,18 @@ class Main {
                         case 2:
                             do {
                                 System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
-                                modificarX = sc.nextInt();
+                                modificarX = Integer.parseInt(sc.nextLine());
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
                                     System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
                                 System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
-                                modificarY = sc.nextInt();
+                                modificarY = Integer.parseInt(sc.nextLine());
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
                                     System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
                             } while (modificarY > taula.midaTaulaY + 1 || modificarY < 1);
-                            sc.nextLine();
                             taula.marcarCasella(modificarX, modificarY);
                             break;
 
@@ -162,9 +165,10 @@ class Main {
                     System.out.println("Escriu el teu Nom:");
                     record.nom = sc.nextLine();
                     records.add(record);
+
                 }
             }
-            if (opcio == 2) llibreRecords(records);
+            if (opcio == 2) LlibreRecords.consultarRecords(records);
         }while (!sortida);
     }
 
@@ -181,8 +185,9 @@ class Main {
             System.out.println("Selecciona una opcio:");
             System.out.println("-------------------------------");
             System.out.println("1-Començar una nova partida");
-            System.out.println("2-Mirar llibre de récords (NO DISPONIBLE)");
-            System.out.println("3-Canviar disseny del taulell (NO DISPONIBLE)");
+            System.out.println("2-Mirar llibre de récords");
+            System.out.println("3-Canviar disseny del taulell (NO DISPONIBLE PEL MOMENT)");
+            System.out.println("4-Crear una taula personalitzada (EXPERMINETAL, NO DISPONIBLE PEL MOMENT)");
             System.out.println("0-Sortir");
             try {
                 System.out.print("> ");
@@ -190,7 +195,7 @@ class Main {
             } catch (NumberFormatException error) {
                 opcio = -1;
             }
-            if (opcio < 0 || opcio > 3) {
+            if (opcio < 0 || opcio > 4) {
                 opcioNoValida = true;
                 System.out.println("Opció no valida!");
                 System.out.println("___________________________________");
@@ -201,163 +206,8 @@ class Main {
     }
 
     public static void pause() {
-
-        System.out.println();
         System.out.println("Pressiona Intro per continuar...");
-        System.out.println(sc.nextLine());
+        sc.nextLine();
     }
-    public static void llibreRecords(ArrayList records) {
-        int opcio;
-        boolean confirmar;
-        boolean sortir;
-        boolean fName = false;
-        boolean fTemp = false;
-        boolean fRow = false;
-        boolean fCol = false;
-        boolean fMine = false;
 
-        String nom;
-        int[] intervalTemps = {0,0};
-        int[] intervalFiles = {0,0};
-        int[] intervalColumnes = {0,0};
-        int[] intervalMines = {0,0};
-
-
-        for (int i = 0;i < records.size();i++) {
-            System.out.println(records.get(i));
-        }
-        do {
-            opcio = 0;
-            sortir = false;
-
-            System.out.println("OPCIONS:");
-            System.out.println("______________");
-            System.out.println("0-Tornar al menu");
-            System.out.println("1-Realitzar cerca avançada amb filtres");
-            System.out.println("2-Tornar a mostrar tots els registres");
-            System.out.println("3-Eliminar un registre");
-            System.out.print(">");
-            try {
-                opcio = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException error) {
-                opcio = -1;
-            }
-            switch (opcio) {
-                default:
-                    System.out.println("Opció no valida.");
-                    break;
-                case 0:
-                    sortir = true;
-                    break;
-                case 1:
-                    do {
-                        confirmar = false;
-                        System.out.println("CERCA AMB FILTRES:");
-                        System.out.println("0-Tornar al menu");
-                        System.out.println("1-Afegir/treure filtre per nom");
-                        System.out.println("2-Afegir/treure filtre per interval de temps");
-                        System.out.println("3-Afegir/treure filtre per interval de files");
-                        System.out.println("4-Afegir/treure filtre per interval de columnes");
-                        System.out.println("5-Afegir/Treure filtre per interval de mines");
-                        System.out.println("6-Confirmar canvis i incialitzar cerca");
-                        System.out.println("_________________________________________________");
-                        System.out.print(">");
-                        try {
-
-                        } catch (NumberFormatException error) {
-                            opcio = -1;
-                        }
-
-                        switch (opcio) {
-                            default:
-                                System.out.println("Opció no valida.");
-                                break;
-                            case 0:
-                                break;
-                            case 1:
-                                if (!fName) {
-                                    fName = true;
-                                    System.out.println("Escriu el nom per el qual vols filtrar les dades:");
-                                    nom = sc.nextLine();
-                                }
-                                else if (fName) {
-                                    fName = false;
-                                    nom = null;
-                                }
-                                break;
-                            case 2:
-                                if (!fTemp) {
-                                    fTemp = true;
-                                    System.out.println("Escriu entre quins valors vols filtrar el temps");
-                                    intervalTemps[0] = Integer.parseInt(sc.nextLine());
-                                    intervalTemps[1] = Integer.parseInt(sc.nextLine());
-                                }
-                                else if (fTemp) {
-                                    fTemp = false;
-                                    intervalTemps[0] = 0;
-                                    intervalTemps[1] = 0;
-                                }
-                                break;
-                            case 3:
-                                if (!fRow) {
-                                    fRow = true;
-                                    System.out.println("Escriu entre quins valors vols filtrar les files");
-                                    intervalFiles[0] = Integer.parseInt(sc.nextLine());
-                                    intervalFiles[1] = Integer.parseInt(sc.nextLine());
-                                }
-                                else if (fRow) {
-                                    fRow = false;
-                                    intervalFiles[0] = 0;
-                                    intervalFiles[1] = 0;
-                                }
-                                break;
-                            case 4:
-                                if (!fCol) {
-                                    fCol = true;
-                                    System.out.println("Escriu entre quins valors vols filtrar les files");
-                                    intervalColumnes[0] = Integer.parseInt(sc.nextLine());
-                                    intervalColumnes[1] = Integer.parseInt(sc.nextLine());
-                                }
-                                else if (fCol) {
-                                    fCol = false;
-                                    intervalColumnes[0] = 0;
-                                    intervalColumnes[1] = 0;
-                                }
-                                break;
-                            case 5:
-                                if (!fMine) {
-                                    fMine = true;
-                                    System.out.println("Escriu entre quins valors vols filtrar les mines");
-                                    intervalMines[0] = Integer.parseInt(sc.nextLine());
-                                    intervalMines[1] = Integer.parseInt(sc.nextLine());
-                                }
-                                else if (fMine) {
-                                    fMine = false;
-                                    intervalMines[0] = 0;
-                                    intervalMines[1] = 0;
-                                }
-                                break;
-                            case 6:
-                                confirmar = true;
-                                break;
-                        }
-
-                    } while (!confirmar);
-                    if (opcio == 6) {
-                        for (int i = 0;i < records.size();i++) {
-
-                        }
-                    }
-                    break;
-
-            }
-            if (opcio == 2) {
-                for (int i = 0;i < records.size();i++) {
-                    System.out.println(records.get(i));
-                }
-            }
-
-        }while (sortir);
-
-    }
 }

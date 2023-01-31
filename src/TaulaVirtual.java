@@ -16,11 +16,36 @@ public class TaulaVirtual {
 
         gameOver = 0;
         System.out.println("Escolleix la mida de la taula");
-        System.out.print("Número Files: ");
-        midaTaulaX = sc.nextInt();
-        System.out.println();
-        System.out.print("Número Columnes: ");
-        midaTaulaY = sc.nextInt();
+        do {
+
+            try {
+                System.out.println();
+                System.out.print("Número de files: ");
+                midaTaulaX = Integer.parseInt(sc.nextLine());
+
+            }catch (NumberFormatException error){
+                midaTaulaX = 0;
+            }
+            if (!(midaTaulaX <= 32) || !(midaTaulaX >=5)) {
+                System.out.println("El numero de files que has introduït no es valid (Minim de 5, Max de 32, en caracters numerics sense decimals)");
+            }
+
+        }while (midaTaulaX >= 32 && midaTaulaX <= 5 );
+
+        do {
+            try {
+                System.out.println();
+                System.out.print("Número de columnes: ");
+                midaTaulaY = Integer.parseInt(sc.nextLine());
+
+            }catch (NumberFormatException error){
+                midaTaulaY = 0;
+            }
+            if (!(midaTaulaY <= 36) || !(midaTaulaY >=5)) {
+                System.out.println("El numero de columnes que has introduït no es valid (Minim de 5, Max de 36, en caracters numerics sense decimals)");
+            }
+        }while (midaTaulaY >= 36 && midaTaulaY <=5);
+
         taula = new int[midaTaulaX + 2][midaTaulaY + 2];
     }
 
@@ -34,7 +59,7 @@ public class TaulaVirtual {
         System.out.println();
         System.out.print("Escriu el número de mines: ");
 
-        int numeroMines = sc.nextInt();
+        int numeroMines = Integer.parseInt(sc.nextLine());
         nMines = numeroMines;
 
         int[] cordenadesMinesY = new int[numeroMines];
