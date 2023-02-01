@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d073fdf-3c65-4c0d-8d3d-ac482722381c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TaulaUsuariPersonalitzada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LlibreRecords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LlibreRecords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TaulaUsuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaUsuari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TaulaVirtual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaVirtual.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +47,11 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,6 +80,7 @@
       <workItem from="1675088137896" duration="373000" />
       <workItem from="1675181485148" duration="2139000" />
       <workItem from="1675210279371" duration="301000" />
+      <workItem from="1675210942637" duration="2255000" />
     </task>
     <servers />
   </component>

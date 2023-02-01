@@ -5,6 +5,7 @@ class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         String Confirm;
+        boolean taulaPersonalitzada = false;
         int opcioPartida;
         int opcio;
         boolean sortida;
@@ -40,7 +41,8 @@ class Main {
                 taula.crearMines();
 
                 while (taula.gameOver == 0) {
-                    TaulaUsuari.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                    else TaulaUsuari.mostrarTaulaUsuari(taula);
                     System.out.println("Escriu 0 per finalitzar la partida");
                     System.out.println("Escriu 1 per explorar una casella");
                     System.out.println("Escriu 2 per marcar una casella");
@@ -55,7 +57,7 @@ class Main {
                             System.out.println("Estas segur de que vols Tornar al menu principal? escriu 'CONFIRMAR' per finalitzar la partida:");
                             System.out.print(">");
                             Confirm = sc.nextLine();
-                            if (Confirm.equals("CONFITMAR")) taula.gameOver = 2;
+                            if (Confirm.equals("CONFIRMAR")) taula.gameOver = 2;
                             break;
                         case 1:
                             do {
@@ -114,7 +116,9 @@ class Main {
 
                 }
                 if (taula.gameOver == 1) {
-                    TaulaUsuari.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                    else TaulaUsuari.mostrarTaulaUsuari(taula);
+
                     System.out.println("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼\n" +
                             "███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀\n" +
                             "██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀\n" +
@@ -137,7 +141,8 @@ class Main {
                     pause();
                 }
                 if (taula.gameOver == 3) {
-                    TaulaUsuari.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                    else TaulaUsuari.mostrarTaulaUsuari(taula);
 
                     System.out.println(
                             "                                                                                                                                                     \n" +
@@ -180,6 +185,11 @@ class Main {
                 }
             }
             if (opcio == 2) LlibreRecords.consultarRecords(records);
+            if (opcio == 3 && !taulaPersonalitzada) {
+                taulaPersonalitzada = true;
+                TaulaUsuariPersonalitzada.crearCaractersPersonalitzats();
+            }
+            else if (opcio == 3 && taulaPersonalitzada) taulaPersonalitzada = false;
         }while (!sortida);
     }
 
@@ -197,7 +207,7 @@ class Main {
             System.out.println("-------------------------------");
             System.out.println("1-Començar una nova partida");
             System.out.println("2-Mirar llibre de récords");
-            System.out.println("3-Canviar disseny del taulell (NO DISPONIBLE PEL MOMENT)");
+            System.out.println("3-Canviar disseny del taulell");
             System.out.println("0-Sortir");
             try {
                 System.out.print("> ");

@@ -1,10 +1,32 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.time.LocalDateTime;
-public class TaulaUsuari {
+import java.util.Scanner;
+
+public class TaulaUsuariPersonalitzada { //Aquesta classe és igual que TaulaUsuari, però els caracters que mostra són personalitzat
     public static long startTime; // Obté el temps actual en milisegons
     public static long tempsDefinitiu = 0;
-    private static TaulaVirtual taulaVirtual;
+    public static Scanner sc = new Scanner(System.in);
+    public static String[] conjuntCaracters;
+
+    public static char[] caracters;
+
+    public static void crearCaractersPersonalitzats() {
+        System.out.println("Sol es tindrà en compte el primer valor que escrigis per no alterar la estructura de la taula");
+        conjuntCaracters = new String[4];
+        caracters = new char[4];
+
+        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA SENSE EXPLORAR (Per defecte \"■\")");
+        conjuntCaracters[0] = sc.nextLine();
+        caracters[0] = conjuntCaracters[0].charAt(0);
+        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA EXPLORADA (Per defecte \"□\")");
+        conjuntCaracters[1] = sc.nextLine();
+        caracters[1] = conjuntCaracters[1].charAt(0);
+        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA MARCADA (Per defecte \"p\")");
+        conjuntCaracters[2] = sc.nextLine();
+        caracters[2] = conjuntCaracters[2].charAt(0);
+        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA AMB MINA (Per defecte \"¤\")");
+        conjuntCaracters[3] = sc.nextLine();
+        caracters[3] = conjuntCaracters[3].charAt(0);
+
+    }
 
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
 
@@ -22,22 +44,22 @@ public class TaulaUsuari {
                 if (j >= 10 && i == 0) System.out.print(" " + j + "");
                 if (j == 0 && i >= 10) System.out.print(" " + i + "");
                 if (j != 0 && i != 0) {
-                    if (taula.taula[i][j] == 0) System.out.print(" ■ ");
-                    if (taula.taula[i][j] == 1) System.out.print(" □ ");
+                    if (taula.taula[i][j] == 0) System.out.print(" "+caracters[0]+" ");
+                    if (taula.taula[i][j] == 1) System.out.print(" "+caracters[1]+" ");
                     if (taula.taula[i][j] == 2) {
                         if (taula.gameOver == 0) {
-                            System.out.print(" P ");
+                            System.out.print(" "+caracters[2]+" ");
                             if (comptadorMines > 0)comptadorMines--;
                         }
                         if (taula.gameOver == 1) System.out.print(" X ");
                     }
                     if (taula.taula[i][j] == 32) {
-                        System.out.print(" P ");
+                        System.out.print(" "+caracters[2]+" ");
                         if (comptadorMines > 0)comptadorMines--;
                     }
                     if (taula.taula[i][j] == 3) {
-                        if (taula.gameOver == 0) System.out.print(" ■ ");
-                        if (taula.gameOver == 1) System.out.print(" ¤ ");
+                        if (taula.gameOver == 0) System.out.print(" "+caracters[0]+" ");
+                        if (taula.gameOver == 1) System.out.print(" "+caracters[3]+" ");
                     }
                     if (taula.taula[i][j] == 11) System.out.print(" 1 ");
                     if (taula.taula[i][j] == 12) System.out.print(" 2 ");
