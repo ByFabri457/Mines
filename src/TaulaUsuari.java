@@ -38,8 +38,8 @@ public class TaulaUsuari {
                         if (comptadorMines > 0)comptadorMines--;
                     }
                     if (taula.taula[i][j] == 3) {
-                        if (taula.gameOver == 0) System.out.print(" ■ ");
-                        if (taula.gameOver == 1) System.out.print(" ¤ ");
+                        if (taula.gameOver != 1) System.out.print(" ■ ");
+                        else System.out.print(" ¤ ");
                     }
                     if (taula.taula[i][j] == 11) System.out.print(" 1 ");
                     if (taula.taula[i][j] == 12) System.out.print(" 2 ");

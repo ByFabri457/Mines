@@ -62,11 +62,8 @@ public class TaulaVirtual {
      * Crea un determinat numero de posicions X i Y a on es col·locaran lés mines
      */
     public static void crearMines() {
-        int posicioY = 0;
-        int posicioX = 0;
-        int numeroMines = 0;
 
-        Random rand = new Random();
+        int numeroMines = 0;
 
         System.out.println();
 
@@ -82,6 +79,17 @@ public class TaulaVirtual {
         }while (numeroMines < 1 && numeroMines > midaTaulaY * midaTaulaX-10);
         nMines = numeroMines;
 
+        inicialitzarTaula();
+    }
+
+    /**
+     * Crea un determinat numero de posicions X i Y a on es col·locaran lés mines i les distribueix a la taula
+     * @param numeroMines Numero de mines que ha establert l'usuari
+     */
+    public static void colocarMines(int numeroMines,int eleccioX,int eleccioY) {
+        Random rand = new Random();
+        int posicioY = 0;
+        int posicioX = 0;
         cordenadesMinesY = new int[numeroMines];
         cordenadesMinesX = new int[numeroMines];
 
@@ -95,9 +103,33 @@ public class TaulaVirtual {
                 if (cordenadesMinesX[i] == cordenadesMinesX[j] && cordenadesMinesY[i] == cordenadesMinesY[j]) {
                     --i;
                 }
+                if (taula[cordenadesMinesX[i]][cordenadesMinesY[j]] == 1) {
+                    --i;
+                }
             }
         }
-        colocarMines(numeroMines, cordenadesMinesX, cordenadesMinesY);
+
+        for (int i = 1; i < midaTaulaX + 1; i++) {
+            for (int j = 1; j < midaTaulaY + 1; j++) {
+                for (int k = 0; k < numeroMines; k++) {
+
+                    if (i == cordenadesMinesX[k] && j == cordenadesMinesY[k] && taula[i][j] == 0) {
+                        taula[i][j] = 3;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Incialitza el taulell buit amb les mesures indicades per l'usuari
+     */
+    public static void inicialitzarTaula() {
+        for (int i = 1; i < midaTaulaX + 1; i++) {
+            for (int j = 1; j < midaTaulaY + 1; j++) {
+                taula[i][j] = 0;
+            }
+        }
     }
 
     /**
@@ -108,59 +140,72 @@ public class TaulaVirtual {
      */
     public static void modificarTaula(int eleccioX, int eleccioY) {
         int indexMina;
-        if (firstPlay) {
-            firstPlay = false;
-        }
 
-        for (int i = 1; i < midaTaulaX + 1; i++) {
-            for (int j = 1; j < midaTaulaY + 1; j++) {
-                if (i == eleccioX && j == eleccioY) {
-                    if (taula[i][j] == 0) {
-                        indexMina = 0;
-                        for (int k = 0; k < 8; k++) {
 
-                            if (taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 3 || taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 32) {
-                                indexMina += 1;
+            for (int i = 1; i < midaTaulaX + 1; i++) {
+                for (int j = 1; j < midaTaulaY + 1; j++) {
+                    if (i == eleccioX && j == eleccioY) {
+                        if (taula[i][j] == 0) {
+                            indexMina = 0;
+                            for (int k = 0; k < 8; k++) {
+
+                                if (taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 3 || taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 32) {
+                                    indexMina += 1;
+                                }
+
                             }
+                            if (indexMina == 0 && taula[i][j] != 2) {
+                                if (firstPlay) { //Si l'usuari fa la primera jugada, s'aseguren les caselles del voltant per evitar que l'usauri comenci explorant una casella amb mina
+                                    asegurarCaselles(eleccioX,eleccioY);
+                                    colocarMines(nMines,eleccioX,eleccioY);
+                                    reiniciarCaselles(eleccioX,eleccioY);
+                                    firstPlay = false;
+                                    modificarTaula(eleccioX,eleccioY);
+                                }
 
+                                else {
+                                    taula[i][j] = 1;
+                                    expandirTaulell(eleccioX, eleccioY); //Si no hi ha cap casella amb una mina al voltant, es fa una cerca a les caselles del voltatn per expandir les caselles explorades.
+                                }
+
+                            }
+                            if (indexMina >= 1) taula[i][j] = indexMina + 10;
                         }
-                        if (indexMina == 0 && taula[i][j] != 2) {
-                            taula[i][j] = 1;
-                            expandirTaulell(eleccioX, eleccioY); //Si no hi ha cap casella amb una mina al voltant, es fa una cerca a les caselles del voltatn per expandir les caselles explorades.
+                        if (taula[i][j] == 3) {
+                            gameOver = 1;
                         }
-                        if (indexMina >= 1) taula[i][j] = indexMina + 10;
-                    }
-                    if (taula[i][j] == 3) {
-                        gameOver = 1;
                     }
                 }
             }
-        }
-        checkCasellesRestants();
+            checkCasellesRestants();
 
     }
 
     /**
-     * Crea les posicions de la tuala i assigna les poscions rebudes del metode crearMines
-     * @param numeroMines Numero de mines que ha establert l'usuari
-     * @param cordenadesMinesX Es l'array de poscions horitzontals que contenen una mina.
-     * @param cordenadesMinesY Es l'array de poscions verticals que contenen una mina.
+     * Asegura Que les cel·les del voltant a l'hora de fer la primera jugada no s'hi pugi colocar mines
+     * @param eleccioX
+     * @param eleccioY
      */
-    public static void colocarMines(int numeroMines, int[] cordenadesMinesX, int[] cordenadesMinesY) {
-        boolean minaTrobada;
-        for (int i = 1; i < midaTaulaX + 1; i++) {
+    public static void asegurarCaselles(int eleccioX,int eleccioY) {
+        taula[eleccioX][eleccioY] = 1;
+        for (int k = 0; k < 8; k++) {
+            if (taula[eleccioX + indexExploracioX[k]][eleccioY + indexExploracioY[k]] == 0) {
+                taula[eleccioX + indexExploracioX[k]][eleccioY + indexExploracioY[k]] = 1;
+            }
+        }
+    }
 
-            for (int j = 1; j < midaTaulaY + 1; j++) {
-                minaTrobada = false;
-                for (int k = 0; k < numeroMines; k++) {
-
-                    if (i == cordenadesMinesX[k] && j == cordenadesMinesY[k]) {
-                        taula[i][j] = 3;
-                        minaTrobada = true;
-                    } else if (minaTrobada == false) {
-                        taula[i][j] = 0;
-                    }
-                }
+    /**
+     * Una vegada les caselles han sigut asegurades i s'ha col·locat les mines,
+     * les caselles asegurades tornen al valor incial, a on es realitzarà una cerca.
+     * @param eleccioX
+     * @param eleccioY
+     */
+    public static void reiniciarCaselles(int eleccioX,int eleccioY) {
+        taula[eleccioX][eleccioY] = 0;
+        for (int k = 0; k < 8; k++) {
+            if (taula[eleccioX + indexExploracioX[k]][eleccioY + indexExploracioY[k]] == 1) {
+                taula[eleccioX + indexExploracioX[k]][eleccioY + indexExploracioY[k]] = 0;
             }
         }
     }

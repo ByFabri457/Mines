@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9d073fdf-3c65-4c0d-8d3d-ac482722381c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Records.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Records.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaulaUsuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaUsuari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaulaVirtual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaVirtual.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +35,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fabri/Desktop/Mines&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Fabri/Desktop/Mines",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
@@ -80,7 +85,9 @@
       <workItem from="1675210942637" duration="2255000" />
       <workItem from="1675213489912" duration="129000" />
       <workItem from="1675251728547" duration="1960000" />
-      <workItem from="1675261443456" duration="285000" />
+      <workItem from="1675261443456" duration="308000" />
+      <workItem from="1675261786933" duration="4018000" />
+      <workItem from="1675267258695" duration="3187000" />
     </task>
     <servers />
   </component>

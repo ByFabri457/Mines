@@ -6,6 +6,7 @@ public class Records {
     public int numeroFiles;
     public int numeroColumnes;
     public int numeroMines;
+    @Override
     public String toString() {
         return String.format("Nom: %s | TempsTrigat: %d"+"s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
     }
@@ -23,7 +24,7 @@ public class Records {
         else {
             for (int i = 0; i < records.size()-1; i++) {
 
-                System.out.println(records.get(i).toString());
+                System.out.println(records.get(i));
 
             }
         }
