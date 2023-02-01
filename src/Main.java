@@ -184,7 +184,7 @@ class Main {
 
                 }
             }
-            if (opcio == 2) LlibreRecords.consultarRecords(records);
+            if (opcio == 2) Records.consultarRecords(records);
             if (opcio == 3 && !taulaPersonalitzada) {
                 taulaPersonalitzada = true;
                 TaulaUsuariPersonalitzada.crearCaractersPersonalitzats();

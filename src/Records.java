@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
-class Records {
+public class Records {
     public String nom = null;
     public long temps;
     public int numeroFiles;
@@ -10,10 +9,6 @@ class Records {
     public String toString() {
         return String.format("Nom: %s | TempsTrigat: %d"+"s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
     }
-
-}
-public class LlibreRecords {
-    static Scanner sc = new Scanner(System.in);
     public static void consultarRecords(ArrayList records) {
 
         System.out.println("RECORDS:");
@@ -27,7 +22,8 @@ public class LlibreRecords {
 
             }
         }
-        System.out.println("____________________________________________________________________________________");
+        System.out.println("________________________________________________________________________________________");
         System.out.println();
     }
+
 }
