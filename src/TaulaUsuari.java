@@ -64,7 +64,8 @@ public class TaulaUsuari {
                         if (comptadorMines > 0)comptadorMines--;
                     }
                     if (taula.taula[i][j] == 3) {
-                        if (taula.gameOver != 1) System.out.print(" ■ ");
+                        if (taula.gameOver == 0) System.out.print(" ■ ");
+                        else if (taula.gameOver == 3) System.out.print(" P ");
                         else System.out.print(" ¤ ");
                     }
                     if (taula.taula[i][j] == 11) System.out.print(" 1 ");
@@ -139,7 +140,8 @@ public class TaulaUsuari {
                         if (comptadorMines > 0)comptadorMines--;
                     }
                     if (taula.taula[i][j] == 3) {
-                        if (taula.gameOver != 1) System.out.print(" "+caracters[0]+" ");
+                        if (taula.gameOver == 0) System.out.print(" "+caracters[0]+" ");
+                        else if (taula.gameOver == 3) System.out.print(" "+caracters[2]+" ");
                         else System.out.print(" "+caracters[3]+" ");
                     }
                     if (taula.taula[i][j] == 11) System.out.print(" 1 ");
