@@ -44,16 +44,7 @@ class Main {
                 taula.crearMines();
 
                 while (taula.gameOver == 0) {
-                    if (visioProfunda) {
-                        System.out.println();
-                        for (int i = 0; i < taula.midaTaulaX + 1; i++) {
-                            for (int j = 0; j < taula.midaTaulaY + 1; j++) {
-                                System.out.print(taula.taula[i][j] + "  ");
-                            }
-                            System.out.println();
-                        }
-                        System.out.println();
-                    }
+                    if (visioProfunda) mostrarVisioProfunda(taula);
                     if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                     else TaulaUsuari.mostrarTaulaUsuari(taula);
 
@@ -130,16 +121,7 @@ class Main {
 
                 }
                 if (taula.gameOver == 1) {
-                    if (visioProfunda) {
-                        System.out.println();
-                        for (int i = 0; i < taula.midaTaulaX + 1; i++) {
-                            for (int j = 0; j < taula.midaTaulaY + 1; j++) {
-                                System.out.print(taula.taula[i][j] + "  ");
-                            }
-                            System.out.println();
-                        }
-                        System.out.println();
-                    }
+                    if (visioProfunda) mostrarVisioProfunda(taula);
                     if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                     else TaulaUsuari.mostrarTaulaUsuari(taula);
                     System.out.println("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼\n" +
@@ -165,13 +147,7 @@ class Main {
                 }
                 if (taula.gameOver == 3) {
                     if (visioProfunda) {
-                        System.out.println();
-                        for (int i = 0; i < taula.midaTaulaX + 1; i++) {
-                            for (int j = 0; j < taula.midaTaulaY + 1; j++) {
-                                System.out.print(taula.taula[i][j] + "  ");
-                            }
-                            System.out.println();
-                        }
+                        mostrarVisioProfunda(taula);
                         if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                         else TaulaUsuari.mostrarTaulaUsuari(taula);
                         System.out.println();
@@ -243,7 +219,10 @@ class Main {
                 System.out.println("ADVERTENCIA:");
                 System.out.println("Al activar la funcio de visió profunda no podràs desar records ni registres ja que es una funció experimental,\n que et permet mostrar la posicio de les mines a la partida.");
                 System.out.println("Per activar la funció, escriu 'CONFIRMAR'");
-                if (sc.nextLine().equals("CONFIRMAR")) visioProfunda = true;
+                if (sc.nextLine().equals("CONFIRMAR")) {
+                    visioProfunda = true;
+                    System.out.println("Visio profunda ha sigut activada amb éxit.");
+                }
             }
             else if (opcio == 4 && visioProfunda) {
                 System.out.println("Visio profunda ha sigut desactivada amb éxit.");
@@ -303,4 +282,14 @@ class Main {
         sc.nextLine();
     }
 
+    public static void mostrarVisioProfunda(TaulaVirtual taula) {
+        System.out.println();
+        for (int i = 0; i < taula.midaTaulaX + 1; i++) {
+            for (int j = 0; j < taula.midaTaulaY + 1; j++) {
+                System.out.print(taula.taula[i][j] + "  ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }
