@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 class Records {
     public String nom = null;
-    public static int temps;
+    public long temps;
     public int numeroFiles;
-    static int numeroColumnes;
-    int numeroMines;
+    public int numeroColumnes;
+    public int numeroMines;
     public String toString() {
-        return String.format("Nom: %s | TempsTrigat: %d | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
+        return String.format("Nom: %s | TempsTrigat: %d"+"s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
     }
 
 }

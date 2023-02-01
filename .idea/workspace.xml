@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9d073fdf-3c65-4c0d-8d3d-ac482722381c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LlibreRecords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LlibreRecords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Records.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LlibreRecords.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TaulaUsuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaUsuari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TaulaVirtual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TaulaVirtual.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,10 +69,13 @@
       <workItem from="1674496852578" duration="1077000" />
       <workItem from="1674665337750" duration="264000" />
       <workItem from="1674668530207" duration="2246000" />
-      <workItem from="1674746486678" duration="40000" />
-      <workItem from="1674746555473" duration="8514000" />
-      <workItem from="1675088708006" duration="5969000" />
-      <workItem from="1675172724106" duration="2686000" />
+      <workItem from="1674756642722" duration="941000" />
+      <workItem from="1674841599912" duration="21000" />
+      <workItem from="1674841649467" duration="1116000" />
+      <workItem from="1674842853091" duration="1152000" />
+      <workItem from="1675088137896" duration="373000" />
+      <workItem from="1675181485148" duration="2139000" />
+      <workItem from="1675210279371" duration="301000" />
     </task>
     <servers />
   </component>

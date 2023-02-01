@@ -3,17 +3,22 @@ import java.util.Scanner;
 
 public class TaulaVirtual {
     public static Scanner sc = new Scanner(System.in);
+
+
     public static int gameOver;
     public static int[][] taula;
-    public static int nMines = 0;
+    public static int nMines;
     public static int[] indexExploracioX = {-1, 0, +1, +1, +1, 0, -1, -1};
-
     public static int[] indexExploracioY = {-1, -1, -1, 0, +1, +1, +1, 0};
+
+    public static int[] cordenadesMinesY;
+    public static int[] cordenadesMinesX;
+
     public static int midaTaulaX;
     public static int midaTaulaY;
-
+    public static boolean firstPlay;
     public static void crearTaula() {
-
+        firstPlay = true;
         gameOver = 0;
         System.out.println("Escolleix la mida de la taula");
         do {
@@ -26,11 +31,11 @@ public class TaulaVirtual {
             }catch (NumberFormatException error){
                 midaTaulaX = 0;
             }
-            if (!(midaTaulaX <= 32) || !(midaTaulaX >=5)) {
+            if (midaTaulaX >= 32 || midaTaulaX <=5) {
                 System.out.println("El numero de files que has introduït no es valid (Minim de 5, Max de 32, en caracters numerics sense decimals)");
             }
 
-        }while (midaTaulaX >= 32 && midaTaulaX <= 5 );
+        }while (midaTaulaX >= 32 || midaTaulaX <= 5 );
 
         do {
             try {
@@ -41,10 +46,10 @@ public class TaulaVirtual {
             }catch (NumberFormatException error){
                 midaTaulaY = 0;
             }
-            if (!(midaTaulaY <= 36) || !(midaTaulaY >=5)) {
+            if (midaTaulaY >= 36 || midaTaulaY <=5) {
                 System.out.println("El numero de columnes que has introduït no es valid (Minim de 5, Max de 36, en caracters numerics sense decimals)");
             }
-        }while (midaTaulaY >= 36 && midaTaulaY <=5);
+        }while (midaTaulaY >= 36 || midaTaulaY <=5);
 
         taula = new int[midaTaulaX + 2][midaTaulaY + 2];
     }
@@ -52,18 +57,26 @@ public class TaulaVirtual {
     public static void crearMines() {
         int posicioY = 0;
         int posicioX = 0;
-
+        int numeroMines = 0;
 
         Random rand = new Random();
 
         System.out.println();
-        System.out.print("Escriu el número de mines: ");
 
-        int numeroMines = Integer.parseInt(sc.nextLine());
+        do {
+            System.out.print("Escriu el número de mines: ");
+
+            try {
+                numeroMines = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException error) {
+                numeroMines = 0;
+            }
+            if (numeroMines < 1 && numeroMines > midaTaulaY * midaTaulaX-10) System.out.println("El numero de mines introduït no és vàlid (com a minim: 1 mina,com a maxim han de quedar 10 posicions lliures a la taula)");
+        }while (numeroMines < 1 && numeroMines > midaTaulaY * midaTaulaX-10);
         nMines = numeroMines;
 
-        int[] cordenadesMinesY = new int[numeroMines];
-        int[] cordenadesMinesX = new int[numeroMines];
+        cordenadesMinesY = new int[numeroMines];
+        cordenadesMinesX = new int[numeroMines];
 
         for (int i = 0; i < numeroMines; i++) {
             posicioX = rand.nextInt(1, midaTaulaX + 1);
@@ -82,6 +95,10 @@ public class TaulaVirtual {
 
     public static void modificarTaula(int eleccioX, int eleccioY) {
         int indexMina;
+        if (firstPlay) {
+            firstPlay = false;
+        }
+
         for (int i = 1; i < midaTaulaX + 1; i++) {
             for (int j = 1; j < midaTaulaY + 1; j++) {
                 if (i == eleccioX && j == eleccioY) {
@@ -92,7 +109,6 @@ public class TaulaVirtual {
                             if (taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 3 || taula[i + indexExploracioX[k]][j + indexExploracioY[k]] == 32) {
                                 indexMina += 1;
                             }
-
 
                         }
                         if (indexMina == 0 && taula[i][j] != 2) {

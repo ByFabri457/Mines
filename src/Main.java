@@ -57,18 +57,23 @@ class Main {
                             Confirm = sc.nextLine();
                             if (Confirm.equals("CONFITMAR")) taula.gameOver = 2;
                             break;
-
                         case 1:
                             do {
                                 System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
-                                modificarX = Integer.parseInt(sc.nextLine());
+
+                                try {modificarX = Integer.parseInt(sc.nextLine());}
+                                catch (NumberFormatException error) {modificarX = 0;}
+
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
                                     System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
                                 System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
-                                modificarY = Integer.parseInt(sc.nextLine());
+
+                                try {modificarY = Integer.parseInt(sc.nextLine());}
+                                catch (NumberFormatException error) {modificarY = 0;}
+
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
                                     System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
@@ -80,14 +85,20 @@ class Main {
                         case 2:
                             do {
                                 System.out.println("Escogeix fila (1-" + taula.midaTaulaX + "):");
-                                modificarX = Integer.parseInt(sc.nextLine());
+
+                                try {modificarX = Integer.parseInt(sc.nextLine());}
+                                catch (NumberFormatException error) {modificarX = 0;}
+
                                 if (modificarX > taula.midaTaulaX + 1 || modificarX < 1) {
                                     System.out.println("No s'ha trobat la fila " + modificarX);
                                 }
                             } while (modificarX > taula.midaTaulaX + 1 || modificarX < 1);
                             do {
                                 System.out.println("Escogeix columna (1-" + taula.midaTaulaY + "):");
-                                modificarY = Integer.parseInt(sc.nextLine());
+
+                                try {modificarY = Integer.parseInt(sc.nextLine());}
+                                catch (NumberFormatException error) {modificarY = 0;}
+
                                 if (modificarY > taula.midaTaulaY + 1 || modificarY < 1) {
                                     System.out.println("No s'ha trobat la columna " + modificarY);
                                 }
@@ -153,8 +164,8 @@ class Main {
                     record = new Records();
                     System.out.println("ESTADISTIQUES DE LA PARTIDA:");
                     System.out.println("_______________________________________");
-                    System.out.println("Temps trigat: NO DISPONIBLE");
-                    record.temps = 0;
+                    System.out.println("Temps trigat (s): " + TaulaUsuari.tempsDefinitiu);
+                    record.temps = TaulaUsuari.tempsDefinitiu;
                     System.out.println("Nombre de mines:" + taula.nMines);
                     record.numeroMines = taula.nMines;
                     System.out.println("Nombre de files:" + taula.midaTaulaY);
@@ -187,7 +198,6 @@ class Main {
             System.out.println("1-Començar una nova partida");
             System.out.println("2-Mirar llibre de récords");
             System.out.println("3-Canviar disseny del taulell (NO DISPONIBLE PEL MOMENT)");
-            System.out.println("4-Crear una taula personalitzada (EXPERMINETAL, NO DISPONIBLE PEL MOMENT)");
             System.out.println("0-Sortir");
             try {
                 System.out.print("> ");
@@ -195,7 +205,7 @@ class Main {
             } catch (NumberFormatException error) {
                 opcio = -1;
             }
-            if (opcio < 0 || opcio > 4) {
+            if (opcio < 0 || opcio > 3) {
                 opcioNoValida = true;
                 System.out.println("Opció no valida!");
                 System.out.println("___________________________________");
