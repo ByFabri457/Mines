@@ -54,7 +54,7 @@ class Main {
                         }
                         System.out.println();
                     }
-                    if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                     else TaulaUsuari.mostrarTaulaUsuari(taula);
 
                     System.out.println("Escriu 0 per finalitzar la partida");
@@ -140,7 +140,7 @@ class Main {
                         }
                         System.out.println();
                     }
-                    if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                     else TaulaUsuari.mostrarTaulaUsuari(taula);
                     System.out.println("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼\n" +
                             "███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀\n" +
@@ -172,7 +172,7 @@ class Main {
                             }
                             System.out.println();
                         }
-                        if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                         else TaulaUsuari.mostrarTaulaUsuari(taula);
                         System.out.println();
                         System.out.println("ESTADISTIQUES DE LA PARTIDA:");
@@ -186,7 +186,7 @@ class Main {
                     }
 
                     else {
-                        if (taulaPersonalitzada) TaulaUsuariPersonalitzada.mostrarTaulaUsuari(taula);
+                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
                         else TaulaUsuari.mostrarTaulaUsuari(taula);
 
                         System.out.println(
@@ -233,7 +233,7 @@ class Main {
             if (opcio == 2) Records.consultarRecords(records);
             if (opcio == 3 && !taulaPersonalitzada) {
                 taulaPersonalitzada = true;
-                TaulaUsuariPersonalitzada.crearCaractersPersonalitzats();
+                TaulaUsuari.crearCaractersPersonalitzats();
             }
             else if (opcio == 3 && taulaPersonalitzada) {
                 taulaPersonalitzada = false;
@@ -263,7 +263,12 @@ class Main {
         int opcio;
         do {
             opcioNoValida = false;
-            System.out.println("|B_U_S_C_A_M_I_N_E_S|");
+            System.out.println("  ____  _   _ ____   ____    _    __  __ ___ _   _ _____ ____  \n" +
+                    " | __ )| | | / ___| / ___|  / \\  |  \\/  |_ _| \\ | | ____/ ___| \n" +
+                    " |  _ \\| | | \\___ \\| |     / _ \\ | |\\/| || ||  \\| |  _| \\___ \\ \n" +
+                    " | |_) | |_| |___) | |___ / ___ \\| |  | || || |\\  | |___ ___) |\n" +
+                    " |____/ \\___/|____/ \\____/_/   \\_\\_|  |_|___|_| \\_|_____|____/ \n" +
+                    "                                                               ");
             System.out.println();
             System.out.println("-Fet per Fabricio Laso, Arnau Gibert i Xavier Pandele");
             System.out.println();

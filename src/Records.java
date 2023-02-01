@@ -8,7 +8,7 @@ public class Records {
     public int numeroMines;
     @Override
     public String toString() {
-        return String.format("Nom: %s | TempsTrigat: %d"+"s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
+            return String.format("Nom: %s | TempsTrigat: %d" + "s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
     }
 
     /**
@@ -23,9 +23,7 @@ public class Records {
         if (records.get(0) == null) System.out.println("Encara no hi ha cap record registrat.");
         else {
             for (int i = 0; i < records.size()-1; i++) {
-
-                System.out.println(records.get(i));
-
+                if (records.get(i) != null) System.out.println(records.get(i));
             }
         }
         System.out.println("________________________________________________________________________________________");
