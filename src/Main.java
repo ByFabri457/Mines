@@ -246,8 +246,7 @@ class Main {
                     " | __ )| | | / ___| / ___|  / \\  |  \\/  |_ _| \\ | | ____/ ___| \n" +
                     " |  _ \\| | | \\___ \\| |     / _ \\ | |\\/| || ||  \\| |  _| \\___ \\ \n" +
                     " | |_) | |_| |___) | |___ / ___ \\| |  | || || |\\  | |___ ___) |\n" +
-                    " |____/ \\___/|____/ \\____/_/   \\_\\_|  |_|___|_| \\_|_____|____/ \n" +
-                    "                                                               ");
+                    " |____/ \\___/|____/ \\____/_/   \\_\\_|  |_|___|_| \\_|_____|____/");
             System.out.println();
             System.out.println("-Fet per Fabricio Laso, Arnau Gibert i Xavier Pandele");
             System.out.println();
@@ -282,6 +281,10 @@ class Main {
         sc.nextLine();
     }
 
+    /**
+     * Si s'activa, aquest métode mostra el taulell del buscamines en versio crua, és a dir, mostrant els valors de taula virtual, si aquesta opció es troba activada, no es podran registrar records durant el seu ús.
+     * @param taula És la taula virtual, de la qual mostra els valors
+     */
     public static void mostrarVisioProfunda(TaulaVirtual taula) {
         System.out.println();
         for (int i = 0; i < taula.midaTaulaX + 1; i++) {
