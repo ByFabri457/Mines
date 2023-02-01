@@ -8,6 +8,9 @@ public class TaulaUsuariPersonalitzada { //Aquesta classe és igual que TaulaUsu
 
     public static char[] caracters;
 
+    /**
+     * Demana a l'usuari quins caracters vol registrar per als determinats estats d'una casella.
+     */
     public static void crearCaractersPersonalitzats() {
         System.out.println("Sol es tindrà en compte el primer valor que escrigis per no alterar la estructura de la taula");
         conjuntCaracters = new String[4];
@@ -28,6 +31,10 @@ public class TaulaUsuariPersonalitzada { //Aquesta classe és igual que TaulaUsu
 
     }
 
+    /**
+     * Mostra a l'usuari el tauler del joc traduïnt els valors que rep de la taula virtual
+     * @param taula És la taula a on es fan tots els calculs de posicions i valors a les caselles
+     */
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
 
         if (taula.firstPlay) {
@@ -76,7 +83,10 @@ public class TaulaUsuariPersonalitzada { //Aquesta classe és igual que TaulaUsu
         mostrarTemps(taula);
         minesRestants(comptadorMines);
     }
-
+    /**
+     * Fa la diferència entre el temps incial i el temps d'actualització un cop es truca el metode de mostrarTaula.
+     * @param taula és la taula a on es fan els calculs, utilitzarem el boleà gameOver per determinar si la partida ha terminat.
+     */
     public static void mostrarTemps(TaulaVirtual taula) {
         long updateTime = System.currentTimeMillis();
         long diffTimeSeconds = updateTime/1000-startTime/1000;
@@ -87,6 +97,11 @@ public class TaulaUsuariPersonalitzada { //Aquesta classe és igual que TaulaUsu
         }
 
     }
+    /**
+     * S'encarrega de comptar el nombre de mines restants quan l'usuari marca una casella en la qual creu que hi pot haver una mina,
+     * cal destacar que el comptador pot registrar valors negatius si lùsuari marca més caselles que el nombre de mines al taulell.
+     * @param comptadorMines
+     */
     public static void minesRestants(int comptadorMines) {
         System.out.println("Mines restants: "+comptadorMines);
         System.out.println("----------------------");

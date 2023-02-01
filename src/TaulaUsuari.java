@@ -1,11 +1,13 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.time.LocalDateTime;
+
 public class TaulaUsuari {
     public static long startTime; // Obté el temps actual en milisegons
     public static long tempsDefinitiu = 0;
     private static TaulaVirtual taulaVirtual;
 
+    /**
+     * Mostra a l'usuari el tauler del joc traduïnt els valors que rep de la taula virtual
+     * @param taula És la taula a on es fan tots els calculs de posicions i valors a les caselles
+     */
     public static void mostrarTaulaUsuari(TaulaVirtual taula) {
 
         if (taula.firstPlay) {
@@ -55,6 +57,10 @@ public class TaulaUsuari {
         minesRestants(comptadorMines);
     }
 
+    /**
+     * Fa la diferència entre el temps incial i el temps d'actualització un cop es truca el metode de mostrarTaula.
+     * @param taula és la taula a on es fan els calculs, utilitzarem el boleà gameOver per determinar si la partida ha terminat.
+     */
     public static void mostrarTemps(TaulaVirtual taula) {
         long updateTime = System.currentTimeMillis();
         long diffTimeSeconds = updateTime/1000-startTime/1000;
@@ -65,6 +71,12 @@ public class TaulaUsuari {
         }
 
     }
+
+    /**
+     * S'encarrega de comptar el nombre de mines restants quan l'usuari marca una casella en la qual creu que hi pot haver una mina,
+     * cal destacar que el comptador pot registrar valors negatius si lùsuari marca més caselles que el nombre de mines al taulell.
+     * @param comptadorMines
+     */
     public static void minesRestants(int comptadorMines) {
         System.out.println("Mines restants: "+comptadorMines);
         System.out.println("----------------------");

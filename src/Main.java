@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//FABRICIO LASO, ARNAU GIBERT I XAVIER PANDELE
+
 class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
@@ -194,6 +196,10 @@ class Main {
     }
 
 
+    /**
+     * Mostra el menu principal del programa i demana a l'usuari que seleccioni una opció.
+     * @return el valor que farà referència a l'opcio seleccionada per l'usuari.
+     */
     public static int mostrarMenu() {
         boolean opcioNoValida;
         int opcio;
@@ -225,6 +231,9 @@ class Main {
         return opcio;
     }
 
+    /**
+     * Utilitzant el metode Scanner podem fer una pausa temporal al cicle del nostre programa, fins que l'usuari introdueixi un intro.
+     */
     public static void pause() {
         System.out.println("Pressiona Intro per continuar...");
         sc.nextLine();

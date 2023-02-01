@@ -17,6 +17,10 @@ public class TaulaVirtual {
     public static int midaTaulaX;
     public static int midaTaulaY;
     public static boolean firstPlay;
+
+    /**
+     * Crea la taula de valors amb la qual interactua l'usuari
+     */
     public static void crearTaula() {
         firstPlay = true;
         gameOver = 0;
@@ -54,6 +58,9 @@ public class TaulaVirtual {
         taula = new int[midaTaulaX + 2][midaTaulaY + 2];
     }
 
+    /**
+     * Crea un determinat numero de posicions X i Y a on es col·locaran lés mines
+     */
     public static void crearMines() {
         int posicioY = 0;
         int posicioX = 0;
@@ -93,6 +100,12 @@ public class TaulaVirtual {
         colocarMines(numeroMines, cordenadesMinesX, cordenadesMinesY);
     }
 
+    /**
+     * utilitzant la posició que ens ha donat l'usuari, explorem la casella i els seus voltants per comprovar si hi ha mines o no,
+     * en cas que la posicio donada contingui una mina, el joc finalitza i l'usuari haurà perdut.
+     * @param eleccioX Cordenada de X que ha enviat l'usuari.
+     * @param eleccioY Cordenada de Y que ha enviat l'usuari
+     */
     public static void modificarTaula(int eleccioX, int eleccioY) {
         int indexMina;
         if (firstPlay) {
@@ -113,7 +126,7 @@ public class TaulaVirtual {
                         }
                         if (indexMina == 0 && taula[i][j] != 2) {
                             taula[i][j] = 1;
-                            expandirTaulell(eleccioX, eleccioY);
+                            expandirTaulell(eleccioX, eleccioY); //Si no hi ha cap casella amb una mina al voltant, es fa una cerca a les caselles del voltatn per expandir les caselles explorades.
                         }
                         if (indexMina >= 1) taula[i][j] = indexMina + 10;
                     }
@@ -127,6 +140,12 @@ public class TaulaVirtual {
 
     }
 
+    /**
+     * Crea les posicions de la tuala i assigna les poscions rebudes del metode crearMines
+     * @param numeroMines Numero de mines que ha establert l'usuari
+     * @param cordenadesMinesX Es l'array de poscions horitzontals que contenen una mina.
+     * @param cordenadesMinesY Es l'array de poscions verticals que contenen una mina.
+     */
     public static void colocarMines(int numeroMines, int[] cordenadesMinesX, int[] cordenadesMinesY) {
         boolean minaTrobada;
         for (int i = 1; i < midaTaulaX + 1; i++) {
@@ -147,6 +166,13 @@ public class TaulaVirtual {
     }
 
 
+    /**
+     * utilitzant la posició que ens ha donat l'usuari, marquem la casella i bolquejem que l'usuari pugi explorarla fins que la desmarqui,
+     * en cas que la posicio donada contingui una mina, la casella quedarà marcada, però amb un valor diferent, en cas que no hi hagi mina, si l'usuari perd la partida,
+     * es mostrarà amb una "X", Simboltizant que la casella estaba marcada, però que no hi havia cap mina.
+     * @param eleccioX Cordenada de X que ha enviat l'usuari.
+     * @param eleccioY Cordenada de Y que ha enviat l'usuari
+     */
     public static void marcarCasella(int eleccioX, int eleccioY) {
         for (int i = 1; i < midaTaulaX + 1; i++) {
             for (int j = 1; j < midaTaulaY + 1; j++) {
@@ -170,12 +196,22 @@ public class TaulaVirtual {
         checkCasellesRestants();
     }
 
+    /**
+     * S'activa quan el metode modificarTaula no troba camp mina al costat,
+     * ens permet explorar totes les caselles del voltant fins que es trobi una mina a tot arreu.
+     * @param eleccioX la posició X de la casella explorada per l'usuari.
+     * @param eleccioY la posició Y de la casella explorada per l'usuari.
+     */
     public static void expandirTaulell(int eleccioX,int eleccioY) {
         for (int i = 0; i < 8; i++) {
             modificarTaula(eleccioX + indexExploracioX[i], eleccioY + indexExploracioY[i]);
         }
     }
 
+    /**
+     * S'encarrega de comprovar que encara hi ha caselles sense mina que l'usuari no ha explorat,
+     * si no troba cap casella marcada o sense explorar que no tingui mina el joc es termina i l'usuari hi ha guanyat.
+     */
     public static void checkCasellesRestants() {
         int casellesLliuresSenseExplorar = 0;
         for (int i = 1; i < midaTaulaX + 1;i++) {

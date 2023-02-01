@@ -9,6 +9,11 @@ public class Records {
     public String toString() {
         return String.format("Nom: %s | TempsTrigat: %d"+"s | NumeroFiles: %d | NumeroColumnes: %d | NumeroMines: %d", this.nom, this.temps, this.numeroFiles, this.numeroColumnes, this.numeroMines);
     }
+
+    /**
+     * S'encarrega de llistar tots els records que s'han registrat mentre el programa ha estat obert
+     * @param records És la llista de records de la qual treu la informació
+     */
     public static void consultarRecords(ArrayList records) {
 
         System.out.println("RECORDS:");
