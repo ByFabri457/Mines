@@ -266,7 +266,7 @@ class Main {
             if (opcio < 0 || opcio > 4) {
                 opcioNoValida = true;
                 System.out.println("Opció no valida!");
-                System.out.println("___________________________________");
+                System.out.println("__________________________________________________________________________");
             }
         } while (opcioNoValida);
 

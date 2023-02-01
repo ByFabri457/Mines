@@ -75,16 +75,16 @@ public class TaulaVirtual {
             } catch (NumberFormatException error) {
                 numeroMines = 0;
             }
-            if (numeroMines < 1 && numeroMines > midaTaulaY * midaTaulaX-10) System.out.println("El numero de mines introduït no és vàlid (com a minim: 1 mina,com a maxim han de quedar 10 posicions lliures a la taula)");
-        }while (numeroMines < 1 && numeroMines > midaTaulaY * midaTaulaX-10);
+            if (numeroMines < 1 || numeroMines > (midaTaulaY * midaTaulaX)/3) System.out.println("El numero de mines introduït no és vàlid (com a minim: 1 mina,com a maxim han de ocupar 1/3 del taulell)");
+        }while (numeroMines < 1 || numeroMines > (midaTaulaY * midaTaulaX)/3);
         nMines = numeroMines;
 
         inicialitzarTaula();
     }
 
     /**
-     * Crea un determinat numero de posicions X i Y a on es col·locaran lés mines i les distribueix a la taula
-     * @param numeroMines Numero de mines que ha establert l'usuari
+     * Crea un determinat nombre de posicions X i Y a on es col·locaran lés mines i les distribueix a la taula
+     * @param numeroMines Nombre de mines que ha establert l'usuari
      */
     public static void colocarMines(int numeroMines,int eleccioX,int eleccioY) {
         Random rand = new Random();
