@@ -255,7 +255,7 @@ class Main {
             System.out.println("1-Començar una nova partida");
             System.out.println("2-Mirar llibre de récords");
             System.out.println("3-Activar/desactivar canvi de disseny del taulell");
-            System.out.println("4-Activar/desactivar visió profunda del taulell (RECOMANAT PER DESARROLLAR, O TRObAR POSSIBLES ERRORS)");
+            System.out.println("4-Activar/desactivar visió profunda del taulell (RECOMANAT PER DESARROLLAR, O TROBAR POSSIBLES ERRORS)");
             System.out.println("0-Sortir");
             try {
                 System.out.print("> ");
