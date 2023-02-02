@@ -14,19 +14,28 @@ public class TaulaUsuari {
         System.out.println("Sol es tindrà en compte el primer valor que escrigis per no alterar la estructura de la taula");
         conjuntCaracters = new String[4];
         caracters = new char[4];
-
-        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA SENSE EXPLORAR (Per defecte \"■\")");
-        conjuntCaracters[0] = sc.nextLine();
-        caracters[0] = conjuntCaracters[0].charAt(0);
-        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA EXPLORADA (Per defecte \"□\")");
-        conjuntCaracters[1] = sc.nextLine();
-        caracters[1] = conjuntCaracters[1].charAt(0);
-        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA MARCADA (Per defecte \"p\")");
-        conjuntCaracters[2] = sc.nextLine();
-        caracters[2] = conjuntCaracters[2].charAt(0);
-        System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA AMB MINA (Per defecte \"¤\")");
-        conjuntCaracters[3] = sc.nextLine();
-        caracters[3] = conjuntCaracters[3].charAt(0);
+        boolean strError;
+        do {
+            strError = false;
+            try {
+                System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA SENSE EXPLORAR (Per defecte \"■\")");
+                conjuntCaracters[0] = sc.nextLine();
+                caracters[0] = conjuntCaracters[0].charAt(0);
+                System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA EXPLORADA (Per defecte \"□\")");
+                conjuntCaracters[1] = sc.nextLine();
+                caracters[1] = conjuntCaracters[1].charAt(0);
+                System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA MARCADA (Per defecte \"p\")");
+                conjuntCaracters[2] = sc.nextLine();
+                caracters[2] = conjuntCaracters[2].charAt(0);
+                System.out.println("Escriu quin caracter vols utilitzar per senyalitzar CASELLA AMB MINA (Per defecte \"¤\")");
+                conjuntCaracters[3] = sc.nextLine();
+                caracters[3] = conjuntCaracters[3].charAt(0);
+            }catch (StringIndexOutOfBoundsException error) {
+                System.out.println("Sisplau, esciu un caracter valid.");
+                System.out.println();
+                strError = true;
+            }
+        }while (strError);
 
     }
 
