@@ -128,7 +128,6 @@ public class TaulaUsuari {
 
     /**
      * Fa la diferència entre el temps incial i el temps d'actualització un cop es truca el metode de mostrarTaula.
-     *
      * @param taula és la taula a on es fan els calculs, utilitzarem el boleà gameOver per determinar si la partida ha terminat.
      */
     public static void mostrarTemps(TaulaVirtual taula) {

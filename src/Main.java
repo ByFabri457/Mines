@@ -157,7 +157,7 @@ class Main {
                         System.out.println("Nombre de mines:" + taula.nMines);
                         System.out.println("Nombre de files:" + taula.midaTaulaY);
                         System.out.println("Nombre de columnes:" + taula.midaTaulaX);
-                        System.out.println("DEGUT A QUE HAS JUGAT AMB VISIO PROFUNDA, NO ES GUARDARA CAP REGISTRE NI RECORD D'AQUESTA PARTIDA");
+                        System.out.println("DEGUT A QUE HAS JUGAT AMB VISUALITZACIO PROFUNDA, NO ES GUARDARA CAP REGISTRE NI RECORD D'AQUESTA PARTIDA");
                         pause();
                     }
 
@@ -217,7 +217,7 @@ class Main {
             }
             if (opcio == 4 && !visioProfunda) {
                 System.out.println("ADVERTENCIA:");
-                System.out.println("Al activar la funcio de visió profunda no podràs desar records ni registres ja que es una funció experimental,\n que et permet mostrar la posicio de les mines a la partida.");
+                System.out.println("Al activar la funcio de visualització profunda no podràs desar records ni registres ja que es una funció experimental,\n que et permet mostrar la posicio de les mines a la partida.");
                 System.out.println("Per activar la funció, escriu 'CONFIRMAR'");
                 if (sc.nextLine().equals("CONFIRMAR")) {
                     visioProfunda = true;
@@ -255,7 +255,7 @@ class Main {
             System.out.println("1-Començar una nova partida");
             System.out.println("2-Mirar llibre de récords");
             System.out.println("3-Activar/desactivar canvi de disseny del taulell");
-            System.out.println("4-Activar/desactivar visió profunda del taulell (RECOMANAT PER DESARROLLAR, O TROBAR POSSIBLES ERRORS)");
+            System.out.println("4-Activar/desactivar visualització profunda del taulell (RECOMANAT PER DESARROLLAR, O TROBAR POSSIBLES ERRORS)");
             System.out.println("0-Sortir");
             try {
                 System.out.print("> ");
