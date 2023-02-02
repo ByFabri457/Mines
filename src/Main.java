@@ -45,8 +45,8 @@ class Main {
 
                 while (taula.gameOver == 0) {
                     if (visioProfunda) mostrarVisioProfunda(taula);
-                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
-                    else TaulaUsuari.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
+                    else TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
 
                     System.out.println("Escriu 0 per finalitzar la partida");
                     System.out.println("Escriu 1 per explorar una casella");
@@ -122,8 +122,8 @@ class Main {
                 }
                 if (taula.gameOver == 1) {
                     if (visioProfunda) mostrarVisioProfunda(taula);
-                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
-                    else TaulaUsuari.mostrarTaulaUsuari(taula);
+                    if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
+                    else TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
                     System.out.println("┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼┼\n" +
                             "███▀▀▀██┼███▀▀▀███┼███▀█▄█▀███┼██▀▀▀\n" +
                             "██┼┼┼▄▄▄┼██▄▄▄▄▄██┼██┼┼┼▀┼┼┼██┼██▀▀▀\n" +
@@ -148,8 +148,8 @@ class Main {
                 if (taula.gameOver == 3) {
                     if (visioProfunda) {
                         mostrarVisioProfunda(taula);
-                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
-                        else TaulaUsuari.mostrarTaulaUsuari(taula);
+                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
+                        else TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
                         System.out.println();
                         System.out.println("ESTADISTIQUES DE LA PARTIDA:");
                         System.out.println("_______________________________________");
@@ -162,8 +162,8 @@ class Main {
                     }
 
                     else {
-                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuariPersonalitzada(taula);
-                        else TaulaUsuari.mostrarTaulaUsuari(taula);
+                        if (taulaPersonalitzada) TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
+                        else TaulaUsuari.mostrarTaulaUsuari(taula,taulaPersonalitzada);
 
                         System.out.println(
                                 "                                                                                                                                                     \n" +
@@ -287,9 +287,10 @@ class Main {
      */
     public static void mostrarVisioProfunda(TaulaVirtual taula) {
         System.out.println();
-        for (int i = 0; i < taula.midaTaulaX + 1; i++) {
-            for (int j = 0; j < taula.midaTaulaY + 1; j++) {
-                System.out.print(taula.taula[i][j] + "  ");
+        for (int i = 0; i < taula.midaTaulaX + 2; i++) {
+            for (int j = 0; j < taula.midaTaulaY + 2; j++) {
+                if (taula.taula[i][j] < 10) System.out.print(taula.taula[i][j] + "  ");
+                else System.out.print(taula.taula[i][j] + " ");
             }
             System.out.println();
         }
